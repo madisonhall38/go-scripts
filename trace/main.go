@@ -180,7 +180,7 @@ func upload(ctx context.Context, withSpan bool) (runTime time.Duration, o *stora
 func download(ctx context.Context, o *storage.ObjectHandle, withSpan bool) (runTime time.Duration, err error) {
 	// Start span.
 	if withSpan {
-		ctxs, span := otel.GetTracerProvider().Tracer("go-ups").Start(ctx, "downloada")
+		ctxs, span := otel.GetTracerProvider().Tracer("go-ups").Start(ctx, "downloads")
 		ctx = ctxs
 		span.SetAttributes(
 			attribute.KeyValue{Key: "object", Value: attribute.StringValue(o.ObjectName())},
